@@ -9,19 +9,61 @@
   --base-fam: "Engagement";
 }
 
-body {
-  background-color: lightblue;
+body,
+h1 {
   margin: 0;
   padding: 0;
 }
 
+body {
+  background-color: lightblue;
+}
+
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 2em;
 }
 
+.title,
+.url-parser {
+  padding-top: 20px;
+}
+
 .title {
   font-family: var(--base-fam, "Sans-serif");
+}
+
+.url-parser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  border: 0;
+  border-radius: 5px;
+  width: 30%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.button {
+  border-radius: 15px;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.button--submit {
+  border: 0;
+  background-color: var(--base-btn);
+  color: #ffffff;
+  text-transform: uppercase;
+  width: 20%;
+  margin-top: 20px;
 }
