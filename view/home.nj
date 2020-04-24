@@ -1,13 +1,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Urlstagram</title>
+    <title>{{title}}</title>
     <meta name="description" content="test for node.js developer">
     <meta name="author" content="Eugene Zubkov">
+    <link href="https://fonts.googleapis.com/css2?family=Engagement&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/styles/style.css">
   </head>
   <body>
-    <h1>Hello World</h1>
+    <header class="header header--main">
+      <h1 class="title">{{title}}</h1>
+    <header>
+    <main id="root"></main>
     <script src="/src/scripts/client.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@ const { Router } = require("express");
 const router = Router();
 
 router.get("/", (req, res) => {
-  res.render("home.nj");
+  res.render("home.nj", { title: "Urlstagram" });
 });
 
 router.get(/.(js|css)$/, (req, res) => {
