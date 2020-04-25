@@ -1,5 +1,5 @@
 class UrlParser {
-  url = "https://localhost:3000/url-parse";
+  url = "http://localhost:3000/url-parse";
 
   constructor(selector) {
     this.parser = document.querySelector(selector);
@@ -9,10 +9,15 @@ class UrlParser {
     this.onSubmit = this.onSubmit.bind(this);
   }
   onSubmit(event) {
+    event.preventDefault();
+
     fetch(this.url, {
       method: "POST",
-      body: JSON.stringify(this.getInputData()),
-    });
+      body: JSON.stringify({ url: this.getInputData() }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).catch(err => console.error(err));
   }
   getInputData() {
     return this.input.value;
