@@ -4,7 +4,10 @@ const { join } = require("path");
 const { Router } = require("express");
 const Joi = require("@hapi/joi");
 
+const Parser = require("./util/Parser.js");
+
 const router = Router();
+const parser = new Parser();
 
 router.get("/", (req, res) => {
   res.render("home.nj", { title: "Urlstagram" });
@@ -26,6 +29,18 @@ router.post("/url-parse", (req, res) => {
   if (error) {
     res.status(400).send(error.details[0].message);
   }
+
+  parser
+    .parse(body.url)
+    .then(elemHandles => {
+      return Promise.all(
+        elemHandles.map(elemHanle => elemHanle.getAttribute("src")),
+      );
+    })
+    .then(imgSources => res.render("home.nj", { imgSources }))
+    .catch(err => {
+      throw new Error(err);
+    });
 });
 
 module.exports = router;
