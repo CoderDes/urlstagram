@@ -29,7 +29,7 @@ router.post("/url-parse", (req, res) => {
   if (error) {
     res.status(400).send(error.details[0].message);
   }
-
+  console.log("PARSING");
   parser
     .parse(body.url)
     .then(elemHandles => {
@@ -37,7 +37,9 @@ router.post("/url-parse", (req, res) => {
         elemHandles.map(elemHanle => elemHanle.getAttribute("src")),
       );
     })
-    .then(imgSources => res.render("home.nj", { imgSources }))
+    .then(imgSources => {
+      res.render("home.nj", { data: imgSources });
+    })
     .catch(err => {
       throw new Error(err);
     });

@@ -14,8 +14,15 @@
         <input type="text" class="input">
         <button class="button button--submit">submit</button>
       </form>
-    <header>
-    <main id="root"></main>
+    </header>
+    <main>
+    {{'LOL' if data else 'EMPTY'}}
+      <ul id='gallery'>
+        {%for item in data%}
+          <li><img src={{item}}></li>
+        {% endfor %}
+      </ul>
+    </main>
     <script src="/src/scripts/client.js"></script>
   </body>
 </html>

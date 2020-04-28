@@ -1,3 +1,20 @@
+// class GalleryRenderer {
+//   constructor() {
+//     this.gallery = document.getElementById("gallery");
+//   }
+//   renderImages(srcArr) {
+//     let newGalleryHtml = "";
+
+//     for (const src of srcArr) {
+//       newGalleryHtml += `<li><img src="${src}"></li>`;
+//     }
+
+//     this.gallery.innerHtml = newGalleryHtml;
+//   }
+// }
+
+// const galleryRender = new GalleryRenderer();
+
 class UrlParser {
   url = "http://localhost:3000/url-parse";
 
@@ -17,7 +34,14 @@ class UrlParser {
       headers: {
         "Content-type": "application/json",
       },
-    }).catch(err => console.error(err));
+    })
+      // .then(res => {
+      // return res.json();
+      // })
+      // .then(data => {
+      // res.render("home.nj", { data: data });
+      // })
+      .catch(err => console.error(err));
   }
   getInputData() {
     return this.input.value;
