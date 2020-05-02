@@ -19,28 +19,30 @@ router.get(/.(js|css)$/, (req, res) => {
   rs.pipe(res);
 });
 
-router.post("/url-parse", (req, res) => {
-  const { body } = req;
+router.get("/url-parse", (req, res) => {
+  const { query } = req;
 
   const { error } = Joi.object({
     url: Joi.string().required().uri(),
-  }).validate(body);
+  }).validate(query);
 
   if (error) {
     res.status(400).send(error.details[0].message);
   }
-  console.log("PARSING");
+  const url = decodeURIComponent(query.url);
+
+  console.log("PARSING", url);
   parser
-    .parse(body.url)
-    .then(elemHandles => {
+    .parse(url)
+    .then((elemHandles) => {
       return Promise.all(
-        elemHandles.map(elemHanle => elemHanle.getAttribute("src")),
+        elemHandles.map((elemHanle) => elemHanle.getAttribute("src"))
       );
     })
-    .then(imgSources => {
+    .then((imgSources) => {
       res.render("home.nj", { data: imgSources });
     })
-    .catch(err => {
+    .catch((err) => {
       throw new Error(err);
     });
 });

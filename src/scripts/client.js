@@ -28,20 +28,24 @@ class UrlParser {
   onSubmit(event) {
     event.preventDefault();
 
-    fetch(this.url, {
-      method: "POST",
-      body: JSON.stringify({ url: this.getInputData() }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      // .then(res => {
-      // return res.json();
-      // })
-      // .then(data => {
-      // res.render("home.nj", { data: data });
-      // })
-      .catch(err => console.error(err));
+    window.location.replace(
+      `/url-parse?url=${encodeURIComponent(this.getInputData())}`
+    );
+
+    // fetch(this.url, {
+    //   method: "POST",
+    //   body: JSON.stringify({ url: this.getInputData() }),
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    // })
+    // .then(res => {
+    // return res.json();
+    // })
+    // .then(data => {
+    // res.render("home.nj", { data: data });
+    // })
+    // .catch(err => console.error(err));
   }
   getInputData() {
     return this.input.value;
