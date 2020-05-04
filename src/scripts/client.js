@@ -5,7 +5,7 @@ class GalleryRenderer {
   renderImages(srcArr) {
     let newGalleryHtml = "";
     for (const src of srcArr) {
-      newGalleryHtml += `<li><img src="${src}"></li>`;
+      newGalleryHtml += `<li class='gallery__item'><img class='image' src="${src}"></li>`;
     }
 
     this.gallery.innerHTML = newGalleryHtml;

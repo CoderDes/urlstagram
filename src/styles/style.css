@@ -50,6 +50,7 @@ body {
   width: 30%;
   padding-top: 5px;
   padding-bottom: 5px;
+  max-width: 250px;
 }
 
 .button {
@@ -57,6 +58,7 @@ body {
   cursor: pointer;
   padding-top: 5px;
   padding-bottom: 5px;
+  max-width: 150px;
 }
 
 .button--submit {
@@ -66,4 +68,21 @@ body {
   text-transform: uppercase;
   width: 20%;
   margin-top: 20px;
+}
+
+.gallery {
+  columns: 3 200px;
+  column-gap: 1rem;
+  margin: 0 auto;
+  padding: 0;
+  width: 95%;
+  list-style-type: none;
+}
+
+.gallery__item {
+  max-width: 100%;
+}
+
+.image {
+  width: 100%;
 }

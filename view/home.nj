@@ -16,7 +16,7 @@
       </form>
     </header>
     <main>
-      <ul id='gallery'></ul>
+      <ul id='gallery' class="gallery"></ul>
     </main>
     <script src="/src/scripts/client.js"></script>
   </body>
