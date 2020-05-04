@@ -9,6 +9,9 @@ const Parser = require("./util/Parser.js");
 const router = Router();
 const parser = new Parser();
 
+parser.setMinImgWidth = 100;
+parser.setMinImgHeight = 100;
+
 router.get("/", (req, res) => {
   res.render("home.nj", { title: "Urlstagram" });
 });
@@ -33,9 +36,7 @@ router.get("/url-parse", (req, res) => {
   parser
     .parse(query.url)
     .then(elemHandles => {
-      return Promise.all(
-        elemHandles.map(elemHanle => elemHanle.getAttribute("src")),
-      );
+      return parser.getArrayOfSources(elemHandles);
     })
     .then(imgSources => {
       res.status(200).json({ imgSources });
