@@ -16,12 +16,7 @@
       </form>
     </header>
     <main>
-    {{'LOL' if data else 'EMPTY'}}
-      <ul id='gallery'>
-        {%for item in data%}
-          <li><img src={{item}}></li>
-        {% endfor %}
-      </ul>
+      <ul id='gallery'></ul>
     </main>
     <script src="/src/scripts/client.js"></script>
   </body>

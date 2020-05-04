@@ -1,19 +1,16 @@
-// class GalleryRenderer {
-//   constructor() {
-//     this.gallery = document.getElementById("gallery");
-//   }
-//   renderImages(srcArr) {
-//     let newGalleryHtml = "";
+class GalleryRenderer {
+  constructor() {
+    this.gallery = document.getElementById("gallery");
+  }
+  renderImages(srcArr) {
+    let newGalleryHtml = "";
+    for (const src of srcArr) {
+      newGalleryHtml += `<li><img src="${src}"></li>`;
+    }
 
-//     for (const src of srcArr) {
-//       newGalleryHtml += `<li><img src="${src}"></li>`;
-//     }
-
-//     this.gallery.innerHtml = newGalleryHtml;
-//   }
-// }
-
-// const galleryRender = new GalleryRenderer();
+    this.gallery.innerHTML = newGalleryHtml;
+  }
+}
 
 class UrlParser {
   url = "http://localhost:3000/url-parse";
@@ -28,19 +25,13 @@ class UrlParser {
   onSubmit(event) {
     event.preventDefault();
 
-    fetch(this.url, {
-      method: "POST",
-      body: JSON.stringify({ url: this.getInputData() }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      // .then(res => {
-      // return res.json();
-      // })
-      // .then(data => {
-      // res.render("home.nj", { data: data });
-      // })
+    fetch(`${this.url}?url=${this.getInputData()}`)
+      .then(res => res.json())
+      .then(data => {
+        const { imgSources } = data;
+        const renderer = new GalleryRenderer();
+        renderer.renderImages(imgSources);
+      })
       .catch(err => console.error(err));
   }
   getInputData() {
