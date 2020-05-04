@@ -9,8 +9,8 @@ const Parser = require("./util/Parser.js");
 const router = Router();
 const parser = new Parser();
 
-parser.setMinImgWidth = 100;
-parser.setMinImgHeight = 100;
+parser.setMinImgWidth = 250;
+parser.setMinImgHeight = 250;
 
 router.get("/", (req, res) => {
   res.render("home.nj", { title: "Urlstagram" });
